@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+databases
+asyncpg
+psycopg2
+pandas
+google-cloud-storage
+scikit-learn
