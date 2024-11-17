@@ -46,7 +46,7 @@ async def evaluate(request: schemas.EvaluateRequest, session_id: str = Header(..
 
             #private
             private_value = metrics[competition.evaluation_func](expect_df['expect'], answer_df['answer'])
-            return {"public_value": public_value, "private_value": private_value}
+            return {"public_score": public_value, "private_score": private_value}
 
         except:
             raise HTTPException(status_code=500, detail="something error")
