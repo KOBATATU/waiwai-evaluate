@@ -6,7 +6,7 @@ from sqlalchemy.future import select
 from gcs import read_csv_from_gcs
 from evaluate import metrics
 
-app = FastAPI()
+app = FastAPI(docs_url=None, redoc_url=None)
 
 @app.post("/evaluate/")
 async def evaluate(
