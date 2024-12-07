@@ -1,21 +1,16 @@
-
-from sqlalchemy import create_engine, MetaData
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
-import databases
+from sqlalchemy.ext.declarative import declarative_base
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", os.getenv("DATABASE_URL", ""))
+DATABASE_URL = os.getenv("DATABASE_URL", "")
 
-database = databases.Database(DATABASE_URL)
-metadata = MetaData()
-Base = declarative_base()
+engine = create_async_engine(DATABASE_URL, echo=True)
+AsyncSessionLocal = sessionmaker(
+    engine, class_=AsyncSession, expire_on_commit=False
+)
 
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-async def connect_db():
-    await database.connect()
-
-async def disconnect_db():
-    await database.disconnect()
+async def get_db():
+    async with AsyncSessionLocal() as session:
+        yield session
