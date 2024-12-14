@@ -4,7 +4,7 @@
 
 ## Introduction
 
-この oss は[こちら](https://github.com/KOBATATU/waiwai)の評価に利用するための API です。読まれていない場合はまずそちらを確認後、こちらのドキュメントをお読みください。
+This OSS is an API used for the evaluation found [here](https://github.com/KOBATATU/waiwai). If you haven't read it yet, please check that first before reading this document.
 
 ## Getting Started
 
